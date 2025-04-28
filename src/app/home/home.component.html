@@ -1,0 +1,140 @@
+<header class="fixed top-0 left-0 w-full z-50 bg-white bg-opacity-80 backdrop-blur-md shadow-md">
+  <div class="container mx-auto flex justify-between items-center py-4 px-6">
+    <div class="text-2xl font-bold text-red-600">
+      Savoré
+    </div>
+    <nav class="space-x-6 text-gray-700 font-medium hidden md:flex">
+      <a href="#about" class="hover:text-red-600 transition">About</a>
+      <a href="#menu" class="hover:text-red-600 transition">Menu</a>
+      <a href="#testimonials" class="hover:text-red-600 transition">Testimonials</a>
+      <a href="#reservation" class="hover:text-red-600 transition">Reserve</a>
+    </nav>
+  </div>
+</header>
+<!-- Home Page for Savoré using Angular and Tailwind CSS -->
+
+<main class="font-sans text-gray-800">
+
+  <!-- Hero Section -->
+  <section
+  class="relative flex items-center justify-center text-center h-screen bg-cover bg-center pt-20 transition-all duration-1000"
+  [ngClass]="{ 'opacity-100': isHeroVisible, 'opacity-0': !isHeroVisible }"
+  [ngStyle]="{ 'background-image': 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(assets/hero-bg.jpg)' }"
+>
+  <div class="relative z-10 p-6">
+    <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+      Indulge in the Art of Fine Dining
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-200 mb-8">
+      Where exquisite flavors meet timeless elegance.
+    </p>
+    <div class="flex flex-wrap justify-center gap-6">
+      <a href="#menu" class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+        Explore Menu
+      </a>
+      <a href="#reservation" class="px-6 py-3 border border-white text-white rounded-lg hover:bg-white hover:text-red-600 transition">
+        Book a Table
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Add this inside your component HTML below OR in global styles -->
+
+
+
+  <!-- About Us Section -->
+  <section
+  class="py-20 bg-gray-100 transition-all duration-700"
+  appObserveVisibility
+  (visibilityChanged)="aboutVisible = $event"
+  [ngClass]="{ 'opacity-100 translate-y-0': aboutVisible, 'opacity-0 translate-y-10': !aboutVisible }"
+>
+  <div class="container mx-auto px-6 md:px-12">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-4xl font-bold mb-6">A Taste of Elegance</h2>
+        <p class="text-lg mb-4">At Savoré, dining is an experience beyond the plate. Inspired by Europe's culinary traditions and modern creativity, every dish we serve celebrates flavor, innovation, and authenticity.</p>
+        <p class="text-lg">Join us for an unforgettable journey crafted with the finest seasonal ingredients and passion.</p>
+      </div>
+      <img src="assets/about-us.jpg" alt="About Us" class="rounded-xl shadow-lg">
+    </div>
+  </div>
+</section>
+
+
+  <!-- Signature Dishes Section -->
+  <section
+  class="py-12 transition-all duration-700 delay-100"
+  appObserveVisibility
+  (visibilityChanged)="menuVisible = $event"
+  [ngClass]="{ 'opacity-100 translate-y-0': menuVisible, 'opacity-0 translate-y-10': !menuVisible }"
+>
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold">Our Signature Creations</h2>
+        <p class="mt-4 text-gray-600">Discover our curated selection of exquisite dishes crafted with passion.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-6 bg-gray-50 rounded-lg shadow hover:shadow-lg transition">
+          <h3 class="text-2xl font-semibold mb-4">Truffle Wild Mushroom Risotto</h3>
+          <p class="text-gray-600">Creamy Arborio rice, wild forest mushrooms, black truffle essence.</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-lg shadow hover:shadow-lg transition">
+          <h3 class="text-2xl font-semibold mb-4">Seared Atlantic Salmon</h3>
+          <p class="text-gray-600">Pan-seared salmon with lemon butter sauce and seasonal greens.</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-lg shadow hover:shadow-lg transition">
+          <h3 class="text-2xl font-semibold mb-4">Handmade Ricotta Gnocchi</h3>
+          <p class="text-gray-600">Pillowy gnocchi tossed in a sage-brown butter sauce.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section
+  class="py-12 bg-gray-100 transition-all duration-700 delay-200"
+  appObserveVisibility
+  (visibilityChanged)="testimonialsVisible = $event"
+  [ngClass]="{ 'opacity-100 translate-y-0': testimonialsVisible, 'opacity-0 translate-y-10': !testimonialsVisible }"
+>
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="text-4xl font-bold mb-12">What Our Guests Say</h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow hover:shadow-lg transition">
+          <p class="text-gray-600 mb-4">"A masterpiece in every bite. Savoré is a must-visit!"</p>
+          <span class="block font-semibold">- Emily D.</span>
+        </div>
+        <div class="bg-white p-8 rounded-lg shadow hover:shadow-lg transition">
+          <p class="text-gray-600 mb-4">"Exceptional service, unforgettable flavors."</p>
+          <span class="block font-semibold">- Marcus L.</span>
+        </div>
+        <div class="bg-white p-8 rounded-lg shadow hover:shadow-lg transition">
+          <p class="text-gray-600 mb-4">"The perfect blend of tradition and innovation."</p>
+          <span class="block font-semibold">- Sophia K.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Section -->
+  <section class="py-20 bg-white" id="reservation">
+    <div class="container mx-auto px-6 md:px-12 text-center">
+      <h2 class="text-4xl font-bold mb-6">Reserve Your Table</h2>
+      <p class="mb-8 text-gray-600">Celebrate life's finest moments with Savoré. Reserve your table today.</p>
+      <a href="mailto:reservations@savore.com" class="px-8 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">Book Now</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-gray-900 text-gray-300 text-center py-8 mt-20">
+  <div class="container mx-auto px-6">
+    <h2 class="text-2xl font-bold mb-2">Savoré</h2>
+    <p class="mb-4">Indulge in the Art of Fine Dining</p>
+    <p class="text-sm">&copy; 2025 Savoré. All rights reserved.</p>
+  </div>
+</footer>
