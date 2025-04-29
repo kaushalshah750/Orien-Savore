@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://savore.mrkaushalshah.com/sitemap.xml
