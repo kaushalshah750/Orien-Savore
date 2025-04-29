@@ -19,21 +19,14 @@
 ## 🛠 Tech Stack
 
 - HTML5
-- CSS3 (or Tailwind CSS if preferred)
+- Tailwind CSS
 - JavaScript (for interactions)
-
----
-
-## 📸 Screenshots
-
-*(Add screenshots of the live site here once available)*
 
 ---
 
 ## 🚀 Live Demo
 
-[🔗 View Live Demo Here](#)  
-*(Replace with actual deployment link: GitHub Pages / Netlify / Vercel)*
+[🔗 View Live Demo Here](https://savore.mrkaushalshah.com/)
 
 ---
 
@@ -41,12 +34,12 @@
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/savore-restaurant-demo.git
+git clone https://github.com/kaushalshah750/Orien-Savore.git
 ```
 
 2. Navigate to the project directory
 ```bash
-cd savore-restaurant-demo
+cd Orien-Savore
 ```
 
 3. Open the `index.html` file in your browser
@@ -59,8 +52,8 @@ Created with ❤️ by [Kaushal Shah](https://www.mrkaushalshah.com)
 For collaborations or freelance projects, feel free to connect!
 
 - [Portfolio Website](https://www.mrkaushalshah.com)
-- [LinkedIn](https://www.linkedin.com/in/kaushalshah750/)
-- [Email](mailto:kaushalshah.work@gmail.com)
+- [LinkedIn](https://www.linkedin.com/in/mrkaushalshah/)
+- [Email](mailto:kaushalshah750@gmail.com)
 
 ---
 
