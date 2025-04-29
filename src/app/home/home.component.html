@@ -47,7 +47,7 @@ class="md:hidden fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-md
   <section
   class="relative flex items-center justify-center text-center h-screen bg-cover bg-center pt-20 transition-all duration-1000"
   [ngClass]="{ 'opacity-100': isHeroVisible, 'opacity-0': !isHeroVisible }"
-  [ngStyle]="{ 'background-image': 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(assets/hero-bg.jpg)' }"
+  [ngStyle]="{ 'background-image': 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(assets/hero-bg.webp)' }"
 >
   <div class="relative z-10 p-6">
     <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
@@ -84,7 +84,7 @@ class="md:hidden fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-md
         <p class="text-lg mb-4">At Savoré, dining is an experience beyond the plate. Inspired by Europe's culinary traditions and modern creativity, every dish we serve celebrates flavor, innovation, and authenticity.</p>
         <p class="text-lg">Join us for an unforgettable journey crafted with the finest seasonal ingredients and passion.</p>
       </div>
-      <img src="assets/about-us.jpg" alt="About Us" class="rounded-xl shadow-lg">
+      <img src="assets/about-us.webp" alt="About Us" class="rounded-xl shadow-lg object-cover">
     </div>
   </div>
 </section>
@@ -106,21 +106,21 @@ class="md:hidden fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-md
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Dish 1 -->
         <div class="relative p-8 bg-white rounded-2xl shadow-md hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition duration-500 group overflow-hidden">
-          <div class="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition duration-500" style="background-image: url(/assets/dish1.jpg);"></div>
+          <div class="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition duration-500" style="background-image: url(/assets/dish1.webp);"></div>
           <h3 class="relative text-2xl font-semibold mb-4 text-gray-900 group-hover:text-red-600 transition">Truffle Wild Mushroom Risotto</h3>
           <p class="relative text-gray-600">Creamy Arborio rice, wild forest mushrooms, black truffle essence.</p>
         </div>
       
         <!-- Dish 2 -->
         <div class="relative p-8 bg-white rounded-2xl shadow-md hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition duration-500 group overflow-hidden">
-          <div class="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition duration-500" style="background-image: url(/assets/dish2.jpg);"></div>
+          <div class="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition duration-500" style="background-image: url(/assets/dish2.webp);"></div>
           <h3 class="relative text-2xl font-semibold mb-4 text-gray-900 group-hover:text-red-600 transition">Seared Atlantic Salmon</h3>
           <p class="relative text-gray-600">Pan-seared salmon with lemon butter sauce and seasonal greens.</p>
         </div>
       
         <!-- Dish 3 -->
         <div class="relative p-8 bg-white rounded-2xl shadow-md hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition duration-500 group overflow-hidden">
-          <div class="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition duration-500" style="background-image: url(/assets/dish3.jpg);"></div>
+          <div class="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition duration-500" style="background-image: url(/assets/dish3.webp);"></div>
           <h3 class="relative text-2xl font-semibold mb-4 text-gray-900 group-hover:text-red-600 transition">Handmade Ricotta Gnocchi</h3>
           <p class="relative text-gray-600">Pillowy gnocchi tossed in a sage-brown butter sauce.</p>
         </div>
@@ -187,7 +187,7 @@ class="md:hidden fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-md
   <section
   id="reservation"
   class="relative py-40 bg-cover bg-center text-white scroll-mt-24"
-  [ngStyle]="{ 'background-image': 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(assets/restaurant-bg.jpg)' }"
+  [ngStyle]="{ 'background-image': 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(assets/restaurant-bg.webp)' }"
 >
   <!-- <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm"></div> -->
 
@@ -208,7 +208,7 @@ class="md:hidden fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-md
 
 <section class="py-20 bg-white text-center px-6 md:px-0">
   <div class="max-w-4xl mx-auto">
-    <img src="assets/chef.jpg" alt="Chef Photo" class="mx-auto mb-8 w-40 h-40 object-cover rounded-full shadow-lg">
+    <img src="assets/chef.webp" alt="Chef Photo" class="mx-auto mb-8 w-40 h-40 object-cover rounded-full shadow-lg">
     <blockquote class="text-2xl md:text-3xl italic font-light text-gray-700 mb-6">
       “Cooking is not chemistry. It is an art. It requires instinct and taste, not exact measurements.”
     </blockquote>
@@ -224,12 +224,12 @@ class="md:hidden fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-md
       Here’s a curated peek inside the soul of Savoré.
     </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <img src="assets/gallery1.jpg" alt="Gallery Image 1" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
-      <img src="assets/gallery2.jpg" alt="Gallery Image 2" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
-      <img src="assets/gallery3.jpg" alt="Gallery Image 3" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
-      <img src="assets/gallery4.jpg" alt="Gallery Image 4" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
-      <img src="assets/gallery5.jpg" alt="Gallery Image 5" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
-      <img src="assets/gallery6.jpg" alt="Gallery Image 6" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
+      <img src="assets/gallery1.webp" alt="Gallery Image 1" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
+      <img src="assets/gallery2.webp" alt="Gallery Image 2" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
+      <img src="assets/gallery3.webp" alt="Gallery Image 3" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
+      <img src="assets/gallery4.webp" alt="Gallery Image 4" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
+      <img src="assets/gallery5.webp" alt="Gallery Image 5" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
+      <img src="assets/gallery6.webp" alt="Gallery Image 6" class="rounded-xl shadow-md hover:scale-105 transition duration-500 w-full h-60 object-cover">
     </div>
   </div>
 </section>
@@ -254,7 +254,7 @@ class="md:hidden fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-md
 
       <!-- Static Map Image -->
       <div class="w-full md:w-2/3 h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
-        <img src="assets/static-map.jpg" alt="Map location" class="object-cover w-full h-full">
+        <img src="assets/static-map.webp" alt="Map location" class="object-cover w-full h-full">
       </div>
     </div>
   </div>
