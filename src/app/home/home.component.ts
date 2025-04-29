@@ -13,6 +13,11 @@ export class HomeComponent {
   aboutVisible = false;
   menuVisible = false;
   testimonialsVisible = false;
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
   ngOnInit() {
     setTimeout(() => {
