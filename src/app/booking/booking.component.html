@@ -1,0 +1,180 @@
+<!-- reservation-popup.component.html -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4" style="background-color: #00000050;">
+    <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <!-- Close button -->
+      <div class="flex justify-end p-2">
+        <button (click)="close()" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+  
+      <!-- Popup content -->
+      <div class="p-6 pt-0">
+        <!-- Form view -->
+        <div *ngIf="!showConfirmation">
+          <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Reserve Your Table at Savoré</h2>
+          
+          <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+            <!-- Name field -->
+            <div class="mb-4">
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                formControlName="name"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                [ngClass]="{'border-red-500': reservationForm.get('name')?.invalid && reservationForm.get('name')?.touched}"
+              >
+              <div *ngIf="reservationForm.get('name')?.invalid && reservationForm.get('name')?.touched" class="text-red-500 text-xs mt-1">
+                Please enter your name
+              </div>
+            </div>
+            
+            <!-- Email field -->
+            <div class="mb-4">
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                formControlName="email"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                [ngClass]="{'border-red-500': reservationForm.get('email')?.invalid && reservationForm.get('email')?.touched}"
+              >
+              <div *ngIf="reservationForm.get('email')?.invalid && reservationForm.get('email')?.touched" class="text-red-500 text-xs mt-1">
+                Please enter a valid email address
+              </div>
+            </div>
+            
+            <!-- Phone field -->
+            <div class="mb-4">
+              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                formControlName="phone"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                [ngClass]="{'border-red-500': reservationForm.get('phone')?.invalid && reservationForm.get('phone')?.touched}"
+              >
+              <div *ngIf="reservationForm.get('phone')?.invalid && reservationForm.get('phone')?.touched" class="text-red-500 text-xs mt-1">
+                Please enter a valid phone number
+              </div>
+            </div>
+            
+            <!-- Date and Time fields in a row -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-4">
+              <div class="flex-1">
+                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                <input 
+                  type="date" 
+                  id="date" 
+                  formControlName="date"
+                  [min]="minDate"
+                  [max]="maxDate"
+                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  [ngClass]="{'border-red-500': reservationForm.get('date')?.invalid && reservationForm.get('date')?.touched}"
+                >
+                <div *ngIf="reservationForm.get('date')?.invalid && reservationForm.get('date')?.touched" class="text-red-500 text-xs mt-1">
+                  Please select a date
+                </div>
+              </div>
+              
+              <div class="flex-1">
+                <label for="time" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
+                <select 
+                  id="time" 
+                  formControlName="time"
+                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  [ngClass]="{'border-red-500': reservationForm.get('time')?.invalid && reservationForm.get('time')?.touched}"
+                >
+                  <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+                </select>
+                <div *ngIf="reservationForm.get('time')?.invalid && reservationForm.get('time')?.touched" class="text-red-500 text-xs mt-1">
+                  Please select a time
+                </div>
+              </div>
+            </div>
+            
+            <!-- Guests field -->
+            <div class="mb-4">
+              <label for="guests" class="block text-sm font-medium text-gray-700 mb-1">Number of Guests</label>
+              <select 
+                id="guests" 
+                formControlName="guests"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                [ngClass]="{'border-red-500': reservationForm.get('guests')?.invalid && reservationForm.get('guests')?.touched}"
+              >
+                <option *ngFor="let num of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="num">{{ num }}</option>
+              </select>
+              <div *ngIf="reservationForm.get('guests')?.invalid && reservationForm.get('guests')?.touched" class="text-red-500 text-xs mt-1">
+                Please select the number of guests
+              </div>
+            </div>
+            
+            <!-- Special requests field -->
+            <div class="mb-6">
+              <label for="specialRequests" class="block text-sm font-medium text-gray-700 mb-1">Special Requests (optional)</label>
+              <textarea 
+                id="specialRequests" 
+                formControlName="specialRequests"
+                rows="3"
+                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                [ngClass]="{'border-red-500': reservationForm.get('specialRequests')?.invalid && reservationForm.get('specialRequests')?.touched}"
+              ></textarea>
+              <div *ngIf="reservationForm.get('specialRequests')?.invalid && reservationForm.get('specialRequests')?.touched" class="text-red-500 text-xs mt-1">
+                Special requests must be less than 500 characters
+              </div>
+            </div>
+            
+            <!-- Submit button -->
+            <button 
+              type="submit" 
+              class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              [disabled]="isSubmitting"
+            >
+              <span *ngIf="!isSubmitting">Book Table</span>
+              <span *ngIf="isSubmitting" class="flex items-center justify-center">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+              </span>
+            </button>
+          </form>
+        </div>
+        
+        <!-- Confirmation view -->
+        <div *ngIf="showConfirmation" class="text-center">
+          <div class="mb-4 flex justify-center">
+            <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          
+          <h2 class="text-2xl font-bold mb-2 text-gray-800">Reservation Confirmed!</h2>
+          <p class="mb-6 text-gray-600">Thank you for choosing Savoré. We're looking forward to serving you.</p>
+          
+          <div class="bg-gray-100 rounded-lg p-4 mb-6 text-left">
+            <div class="mb-2"><span class="font-semibold">Name:</span> {{ reservationForm.get('name')?.value }}</div>
+            <div class="mb-2"><span class="font-semibold">Date:</span> {{ reservationForm.get('date')?.value | date }}</div>
+            <div class="mb-2"><span class="font-semibold">Time:</span> {{ reservationForm.get('time')?.value }}</div>
+            <div><span class="font-semibold">Party size:</span> {{ reservationForm.get('guests')?.value }} guests</div>
+          </div>
+          
+          <p class="text-sm text-gray-500 mb-6">A confirmation email has been sent to {{ reservationForm.get('email')?.value }}</p>
+          
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button (click)="reset()" class="flex-1 bg-white border border-gray-300 text-gray-700 font-semibold py-2 px-4 rounded hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+              Make Another Reservation
+            </button>
+            
+            <button (click)="close()" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

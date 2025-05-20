@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ObserveVisibilityDirective } from '../directive/observe-visibility.directive';
+import { BookingComponent } from "../booking/booking.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ObserveVisibilityDirective],
+  imports: [CommonModule, BookingComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -14,6 +14,7 @@ export class HomeComponent {
   menuVisible = false;
   testimonialsVisible = false;
   menuOpen = false;
+  showReservationPopup = false;
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;

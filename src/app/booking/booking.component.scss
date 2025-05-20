@@ -1,0 +1,45 @@
+/* reservation-popup.component.css */
+/* Custom styles (if needed beyond Tailwind) */
+
+:host {
+    display: block;
+  }
+  
+  /* Add animation for the popup */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  :host > div {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Custom scrollbar for the popup */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  /* Focus styles for accessibility */
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+  }
