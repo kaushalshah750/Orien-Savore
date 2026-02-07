@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 
 @Component({
   selector: 'app-booking',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './booking.component.html',
   styleUrl: './booking.component.scss'

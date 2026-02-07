@@ -1,0 +1,94 @@
+
+<main class="text-gray-200 bg-charcoal font-sans overflow-x-hidden pt-20">
+
+    <!-- Reservation Hero -->
+    <section class="py-24 text-center relative bg-fixed bg-cover bg-center" style="background-image: url('assets/restaurant-bg.webp');">
+        <div class="absolute inset-0 bg-black/80"></div>
+        <div class="relative z-10 px-6">
+            <h4 class="text-gold uppercase tracking-[0.2em] text-sm mb-4 font-bold">Secure Your Table</h4>
+            <h1 class="text-5xl md:text-7xl font-serif text-white mb-2">Reservations</h1>
+            <p class="text-xl text-gray-300 font-light max-w-2xl mx-auto mt-6">
+                We accept reservations up to 30 days in advance.
+            </p>
+        </div>
+    </section>
+
+    <!-- Reservation Content -->
+    <section class="py-24 bg-charcoal relative">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row gap-16 md:gap-24">
+                
+                <!-- Info Column -->
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-3xl font-serif text-white mb-8">Things to Know</h2>
+                    <ul class="space-y-8 pl-4 border-l border-gold/30">
+                        <li class="pl-6 relative">
+                            <span class="absolute -left-[5px] top-2 w-2 h-2 bg-gold rounded-full"></span>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-2">Dining Policy</h4>
+                            <p class="text-gray-400 font-light leading-relaxed">
+                                We kindly request that you arrive on time for your reservation. Tables are held for 15 minutes before being released.
+                            </p>
+                        </li>
+                        <li class="pl-6 relative">
+                            <span class="absolute -left-[5px] top-2 w-2 h-2 bg-gold rounded-full"></span>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-2">Dress Code</h4>
+                            <p class="text-gray-400 font-light leading-relaxed">
+                                Smart casual. We ask that gentlemen wear closed-toe shoes and long trousers.
+                            </p>
+                        </li>
+                        <li class="pl-6 relative">
+                            <span class="absolute -left-[5px] top-2 w-2 h-2 bg-gold rounded-full"></span>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-2">Large Parties</h4>
+                            <p class="text-gray-400 font-light leading-relaxed">
+                                For parties of 8 or more, please contact us directly at <a href="mailto:events@savore.com" class="text-gold hover:underline">events&#64;savore.com</a> to arrange a special menu.
+                            </p>
+                        </li>
+                         <li class="pl-6 relative">
+                            <span class="absolute -left-[5px] top-2 w-2 h-2 bg-gold rounded-full"></span>
+                            <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-2">Children</h4>
+                            <p class="text-gray-400 font-light leading-relaxed">
+                                We welcome children over the age of 10. We do not have high chairs available.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Booking Trigger Column -->
+                <div class="w-full md:w-1/2 bg-charcoal-light p-10 md:p-16 rounded-sm border border-white/5 shadow-2xl text-center">
+                    <h3 class="text-2xl font-serif text-white mb-6">Ready to Book?</h3>
+                    <p class="text-gray-400 font-light mb-10">
+                        Check availability and secure your table instantly.
+                    </p>
+                    <button (click)="showReservationPopup = true" class="w-full py-5 bg-gold text-charcoal font-bold uppercase tracking-widest text-sm hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] block">
+                        Open Reservation Form
+                    </button>
+                    <p class="mt-8 text-xs text-gray-500 uppercase tracking-widest">
+                        Or call us at +91 99744 42525
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Dining Teaser -->
+    <section class="py-24 bg-neutral-900 border-t border-white/5">
+        <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2 order-2 md:order-1">
+                 <img src="assets/about-us.webp" alt="Private Dining" class="w-full h-80 object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+            </div>
+            <div class="w-full md:w-1/2 order-1 md:order-2 text-left">
+                <h2 class="text-3xl font-serif text-white mb-6">Private Dining & Events</h2>
+                <p class="text-gray-400 font-light leading-relaxed mb-8">
+                    Host your next exclusive event in our private Chef's Table room. Seating up to 14 guests, offering a bespoke tasting menu and dedicated sommelier.
+                </p>
+                <a href="#" class="text-gold border-b border-gold pb-1 uppercase tracking-widest text-xs hover:text-white transition-colors">Inquire Now</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<app-booking 
+    *ngIf="showReservationPopup" 
+    (closePopup)="showReservationPopup = false"
+></app-booking>
