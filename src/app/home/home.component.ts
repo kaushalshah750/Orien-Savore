@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { BookingComponent } from "../booking/booking.component";
 
 @Component({
@@ -15,6 +15,12 @@ export class HomeComponent {
   testimonialsVisible = false;
   menuOpen = false;
   showReservationPopup = false;
+  isScrolled = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 50;
+  }
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;

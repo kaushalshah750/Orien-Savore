@@ -1,6 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-gold: #D4AF37;
+    --color-gold-light: #F4C430;
+    --color-gold-dark: #AA8C2C;
+
+    --color-charcoal: #121212;
+    --color-charcoal-light: #1E1E1E;
+    --color-charcoal-lighter: #2C2C2C;
+
+    --font-serif: "Playfair Display", serif;
+    --font-sans: "Lato", sans-serif;
+}
+
+@keyframes fadeInSlow {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 html {
     scroll-behavior: smooth;
-  }
-  
+}
+
+body {
+    background-color: var(--color-charcoal);
+    color: white;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background-color: var(--color-gold);
+    color: var(--color-charcoal);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-serif);
+}

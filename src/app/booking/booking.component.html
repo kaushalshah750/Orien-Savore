@@ -1,9 +1,9 @@
 <!-- reservation-popup.component.html -->
-<div class="fixed inset-0 z-50 flex items-center justify-center p-4" style="background-color: #00000050;">
-    <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px);">
+    <div class="bg-neutral-900 border border-gold/20 rounded-sm shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto animate-fadeInSlow">
       <!-- Close button -->
-      <div class="flex justify-end p-2">
-        <button (click)="close()" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+      <div class="flex justify-end p-4">
+        <button (click)="close()" class="text-gray-400 hover:text-gold transition-colors focus:outline-none">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
@@ -11,21 +11,23 @@
       </div>
   
       <!-- Popup content -->
-      <div class="p-6 pt-0">
+      <div class="p-8 pt-0">
         <!-- Form view -->
         <div *ngIf="!showConfirmation">
-          <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Reserve Your Table at Savoré</h2>
+          <h2 class="text-3xl font-serif font-bold text-center mb-2 text-white">Reserve Your Table</h2>
+          <p class="text-center text-gray-400 mb-8 text-sm">Join us for an unforgettable evening.</p>
           
-          <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()" class="space-y-4">
             <!-- Name field -->
-            <div class="mb-4">
-              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <div>
+              <label for="name" class="block text-xs uppercase tracking-widest text-gold mb-2 font-bold">Full Name</label>
               <input 
                 type="text" 
                 id="name" 
                 formControlName="name"
-                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors rounded-none"
                 [ngClass]="{'border-red-500': reservationForm.get('name')?.invalid && reservationForm.get('name')?.touched}"
+                placeholder="John Doe"
               >
               <div *ngIf="reservationForm.get('name')?.invalid && reservationForm.get('name')?.touched" class="text-red-500 text-xs mt-1">
                 Please enter your name
@@ -33,14 +35,15 @@
             </div>
             
             <!-- Email field -->
-            <div class="mb-4">
-              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <div>
+              <label for="email" class="block text-xs uppercase tracking-widest text-gold mb-2 font-bold">Email</label>
               <input 
                 type="email" 
                 id="email" 
                 formControlName="email"
-                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors rounded-none"
                 [ngClass]="{'border-red-500': reservationForm.get('email')?.invalid && reservationForm.get('email')?.touched}"
+                placeholder="john@example.com"
               >
               <div *ngIf="reservationForm.get('email')?.invalid && reservationForm.get('email')?.touched" class="text-red-500 text-xs mt-1">
                 Please enter a valid email address
@@ -48,14 +51,15 @@
             </div>
             
             <!-- Phone field -->
-            <div class="mb-4">
-              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+            <div>
+              <label for="phone" class="block text-xs uppercase tracking-widest text-gold mb-2 font-bold">Phone Number</label>
               <input 
                 type="tel" 
                 id="phone" 
                 formControlName="phone"
-                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors rounded-none"
                 [ngClass]="{'border-red-500': reservationForm.get('phone')?.invalid && reservationForm.get('phone')?.touched}"
+                placeholder="+1 (555) 000-0000"
               >
               <div *ngIf="reservationForm.get('phone')?.invalid && reservationForm.get('phone')?.touched" class="text-red-500 text-xs mt-1">
                 Please enter a valid phone number
@@ -63,16 +67,15 @@
             </div>
             
             <!-- Date and Time fields in a row -->
-            <div class="flex flex-col sm:flex-row gap-4 mb-4">
+            <div class="flex flex-col sm:flex-row gap-4">
               <div class="flex-1">
-                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                <label for="date" class="block text-xs uppercase tracking-widest text-gold mb-2 font-bold">Date</label>
                 <input 
                   type="date" 
                   id="date" 
                   formControlName="date"
                   [min]="minDate"
-                  [max]="maxDate"
-                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 text-gray-400 focus:text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors rounded-none appearance-none"
                   [ngClass]="{'border-red-500': reservationForm.get('date')?.invalid && reservationForm.get('date')?.touched}"
                 >
                 <div *ngIf="reservationForm.get('date')?.invalid && reservationForm.get('date')?.touched" class="text-red-500 text-xs mt-1">
@@ -81,14 +84,14 @@
               </div>
               
               <div class="flex-1">
-                <label for="time" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
+                <label for="time" class="block text-xs uppercase tracking-widest text-gold mb-2 font-bold">Time</label>
                 <select 
                   id="time" 
                   formControlName="time"
-                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                  class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors rounded-none appearance-none"
                   [ngClass]="{'border-red-500': reservationForm.get('time')?.invalid && reservationForm.get('time')?.touched}"
                 >
-                  <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+                  <option *ngFor="let time of availableTimes" [value]="time" class="bg-neutral-800 text-white">{{ time }}</option>
                 </select>
                 <div *ngIf="reservationForm.get('time')?.invalid && reservationForm.get('time')?.touched" class="text-red-500 text-xs mt-1">
                   Please select a time
@@ -97,15 +100,15 @@
             </div>
             
             <!-- Guests field -->
-            <div class="mb-4">
-              <label for="guests" class="block text-sm font-medium text-gray-700 mb-1">Number of Guests</label>
+            <div>
+              <label for="guests" class="block text-xs uppercase tracking-widest text-gold mb-2 font-bold">Guests</label>
               <select 
                 id="guests" 
                 formControlName="guests"
-                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors rounded-none appearance-none"
                 [ngClass]="{'border-red-500': reservationForm.get('guests')?.invalid && reservationForm.get('guests')?.touched}"
               >
-                <option *ngFor="let num of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="num">{{ num }}</option>
+                <option *ngFor="let num of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]" [value]="num" class="bg-neutral-800 text-white">{{ num }} Person{{ num > 1 ? 's' : '' }}</option>
               </select>
               <div *ngIf="reservationForm.get('guests')?.invalid && reservationForm.get('guests')?.touched" class="text-red-500 text-xs mt-1">
                 Please select the number of guests
@@ -113,29 +116,30 @@
             </div>
             
             <!-- Special requests field -->
-            <div class="mb-6">
-              <label for="specialRequests" class="block text-sm font-medium text-gray-700 mb-1">Special Requests (optional)</label>
+            <div>
+              <label for="specialRequests" class="block text-xs uppercase tracking-widest text-gold mb-2 font-bold">Requests</label>
               <textarea 
                 id="specialRequests" 
                 formControlName="specialRequests"
-                rows="3"
-                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                rows="2"
+                class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors rounded-none"
                 [ngClass]="{'border-red-500': reservationForm.get('specialRequests')?.invalid && reservationForm.get('specialRequests')?.touched}"
+                placeholder="Allergies, special occasion, etc."
               ></textarea>
               <div *ngIf="reservationForm.get('specialRequests')?.invalid && reservationForm.get('specialRequests')?.touched" class="text-red-500 text-xs mt-1">
-                Special requests must be less than 500 characters
+                Max 500 chars
               </div>
             </div>
             
             <!-- Submit button -->
             <button 
               type="submit" 
-              class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="w-full bg-gold hover:bg-white text-charcoal font-bold py-4 px-4 uppercase tracking-widest transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-neutral-900 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
               [disabled]="isSubmitting"
             >
-              <span *ngIf="!isSubmitting">Book Table</span>
+              <span *ngIf="!isSubmitting">Confirm Reservation</span>
               <span *ngIf="isSubmitting" class="flex items-center justify-center">
-                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-charcoal" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -146,32 +150,43 @@
         </div>
         
         <!-- Confirmation view -->
-        <div *ngIf="showConfirmation" class="text-center">
-          <div class="mb-4 flex justify-center">
-            <svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+        <div *ngIf="showConfirmation" class="text-center py-10">
+          <div class="mb-6 flex justify-center">
+            <div class="w-20 h-20 rounded-full border-2 border-gold flex items-center justify-center text-gold">
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
           </div>
           
-          <h2 class="text-2xl font-bold mb-2 text-gray-800">Reservation Confirmed!</h2>
-          <p class="mb-6 text-gray-600">Thank you for choosing Savoré. We're looking forward to serving you.</p>
+          <h2 class="text-3xl font-serif font-bold mb-4 text-white">Confirmed</h2>
+          <p class="mb-8 text-gray-400">We look forward to serving you.</p>
           
-          <div class="bg-gray-100 rounded-lg p-4 mb-6 text-left">
-            <div class="mb-2"><span class="font-semibold">Name:</span> {{ reservationForm.get('name')?.value }}</div>
-            <div class="mb-2"><span class="font-semibold">Date:</span> {{ reservationForm.get('date')?.value | date }}</div>
-            <div class="mb-2"><span class="font-semibold">Time:</span> {{ reservationForm.get('time')?.value }}</div>
-            <div><span class="font-semibold">Party size:</span> {{ reservationForm.get('guests')?.value }} guests</div>
+          <div class="bg-neutral-800 border border-white/5 rounded p-6 mb-8 text-left space-y-3">
+            <div class="flex justify-between border-b border-gray-700 pb-2">
+              <span class="text-gray-500 text-sm uppercase">Name</span>
+              <span class="text-white font-serif">{{ reservationForm.get('name')?.value }}</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-700 pb-2">
+              <span class="text-gray-500 text-sm uppercase">Date</span>
+              <span class="text-white font-serif">{{ reservationForm.get('date')?.value | date }}</span>
+            </div>
+            <div class="flex justify-between border-b border-gray-700 pb-2">
+              <span class="text-gray-500 text-sm uppercase">Time</span>
+              <span class="text-white font-serif">{{ reservationForm.get('time')?.value }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 text-sm uppercase">Guests</span>
+              <span class="text-white font-serif">{{ reservationForm.get('guests')?.value }}</span>
+            </div>
           </div>
           
-          <p class="text-sm text-gray-500 mb-6">A confirmation email has been sent to {{ reservationForm.get('email')?.value }}</p>
-          
-          <div class="flex flex-col sm:flex-row gap-3">
-            <button (click)="reset()" class="flex-1 bg-white border border-gray-300 text-gray-700 font-semibold py-2 px-4 rounded hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
-              Make Another Reservation
-            </button>
-            
-            <button (click)="close()" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+          <div class="flex flex-col gap-4">            
+            <button (click)="close()" class="w-full bg-gold hover:bg-white text-charcoal font-bold py-3 px-4 uppercase tracking-widest transition-colors focus:outline-none">
               Close
+            </button>
+            <button (click)="reset()" class="w-full bg-transparent border border-gray-600 text-gray-400 font-bold py-3 px-4 uppercase tracking-widest hover:text-white hover:border-white transition-colors focus:outline-none">
+              Make Another
             </button>
           </div>
         </div>
